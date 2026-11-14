@@ -1,5 +1,5 @@
 // Runs only when SPACE_INTRUDERS_NATIVE_SMOKE_OUTPUT is set on this app process.
-// Synthetic events exercise the packaged WKWebView without desktop automation privileges.
+// Synthetic events exercise the packaged desktop webview without automation privileges.
 (() => {
   if (window.__spaceIntrudersNativeSmokeStarted) return;
   window.__spaceIntrudersNativeSmokeStarted = true;
@@ -7,7 +7,7 @@
   const key = (type, code) => window.dispatchEvent(new KeyboardEvent(type, { code, key: code, bubbles: true }));
   const phase = () => document.querySelector('#overlay')?.textContent?.trim() || 'playing';
   const score = () => Number(document.querySelector('#score')?.textContent || 0);
-  const report = { mode: 'opt-in synthetic WKWebView input', location: location.href, checkpoints: [] };
+  const report = { mode: 'opt-in synthetic desktop webview input', location: location.href, checkpoints: [] };
   report.environment = { visibility: document.visibilityState, hidden: document.hidden, width: innerWidth, height: innerHeight };
   let animationFrameCount = 0;
   const countFrame = () => { animationFrameCount++; requestAnimationFrame(countFrame); };
@@ -47,7 +47,7 @@
     await delay(200); capture('paused');
     document.querySelector('[data-action="resume"]')?.click();
     await delay(200); capture('resumed');
-    report.passed = report.location === 'tauri://localhost'
+    report.passed = ['tauri://localhost', 'tauri://localhost/', 'http://tauri.localhost', 'http://tauri.localhost/'].includes(report.location)
       && report.checkpoints[2].phase === 'playing'
       && report.checkpoints[3].score > 0
       && report.checkpoints[4].phase.includes('PAUSED')

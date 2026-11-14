@@ -1,0 +1,7 @@
+# Windows x64 release
+
+The manual [Windows installer validation workflow](../.github/workflows/windows-release.yml) uses a native `windows-latest` runner, Node 24.14.0, Rust 1.94.0, locked npm/Cargo dependencies, and Tauri NSIS packaging. It runs the frontend tests and production build, checks Cargo, installs the NSIS package into a temporary directory, launches that installed executable with the opt-in native smoke hook, checks real elapsed gameplay and pause/resume, checks valid installer PE and x64 installed executable headers, hashes the installer and executable, then uninstalls. Its Actions artifact contains the installer, Windows SHA256SUMS, and validation report. The workflow does not modify a GitHub Release.
+
+For a local Windows build: `npm ci`, `npm test`, `npm run build`, `cargo check --manifest-path src-tauri/Cargo.toml --locked`, and `npm run tauri -- build --bundles nsis --target x86_64-pc-windows-msvc --ci -- --locked`. The macOS `desktop:build` script deliberately builds an `.app` and is not the Windows command.
+
+The app itself is offline. This small unsigned installer uses Tauri's default WebView2 downloaded bootstrapper if WebView2 is missing, so first-time installation may require internet. Windows 10/11 usually include WebView2. No signing certificate is configured; Windows may show a publisher warning. The native smoke exercises synthetic input in the packaged WebView2. It does not verify physical keyboard input or audible output.

@@ -1,0 +1,55 @@
+name: Windows installer validation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-x64:
+    runs-on: windows-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.14.0
+          cache: npm
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.94.0
+          targets: x86_64-pc-windows-msvc
+      - uses: swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+      - name: Record toolchain and source
+        shell: pwsh
+        run: |
+          node --version
+          npm --version
+          rustc --version
+          cargo --version
+          git rev-parse HEAD
+      - name: Install locked frontend dependencies
+        run: npm ci
+      - name: Test frontend
+        run: npm test
+      - name: Build frontend
+        run: npm run build
+      - name: Check locked Rust dependencies
+        run: cargo check --manifest-path src-tauri/Cargo.toml --locked
+      - name: Build x64 NSIS installer
+        run: npm run tauri -- build --bundles nsis --target x86_64-pc-windows-msvc --ci -- --locked
+      - name: Validate installer and installed app
+        shell: pwsh
+        run: ./scripts/windows-validate.ps1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: space-intruders-windows-x64-${{ github.sha }}
+          path: |
+            src-tauri/target/x86_64-pc-windows-msvc/release/bundle/nsis/*-setup.exe
+            windows-validation/*
+          if-no-files-found: warn
+          retention-days: 30
