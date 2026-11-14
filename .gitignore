@@ -5,3 +5,9 @@ src-tauri/gen/
 .DS_Store
 release/
 src-tauri/icons/SpaceIntruders.iconset/
+.claude/
+.codex/
+AGENTS.md
+CLAUDE.md
+.env
+.env.*

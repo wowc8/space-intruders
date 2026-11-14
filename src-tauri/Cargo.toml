@@ -11,7 +11,15 @@ name = "space_intruders_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
-tauri-build = "=2.6.3"
+tauri-build = { version = "=2.6.3", features = [] }
 
 [dependencies]
-tauri = "=2.11.5"
+tauri = { version = "=2.11.5", features = [] }
+
+# Rust 1.94's debuginfo stripping can produce proc-macro dylibs rejected by
+# macOS 27 dyld (misaligned LINKEDIT string pool). Keep build artifacts intact.
+[profile.release]
+strip = "none"
+
+[profile.release.build-override]
+strip = "none"
