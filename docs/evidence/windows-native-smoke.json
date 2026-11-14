@@ -1,0 +1,55 @@
+{
+  "mode": "opt-in synthetic desktop webview input",
+  "location": "http://tauri.localhost/",
+  "checkpoints": [
+    {
+      "name": "title",
+      "phase": "\u2726EARTH DEFENSE / SYSTEM READYSPACEINTRUDERSOne ship. Four shields. An endless sky.START GAME \u2197HOW TO PLAYPRESS ENTER TO LAUNCH",
+      "score": 0,
+      "animationFrameCount": 32,
+      "lives": "\u25c6 \u25c6 \u25c6"
+    },
+    {
+      "name": "help",
+      "phase": "FIELD MANUAL / 01DEFEND THE LINEMove your cannon, break through the formation and protect the ground line. Your shields absorb shots from both sides.MOVE\u2190 \u2192 or A DFIRESPACEPAUSEESC or PAUDIOMThree lives. Earn one extra at 1,500 points. Clear a wave to advance.BACK",
+      "score": 0,
+      "animationFrameCount": 39,
+      "lives": "\u25c6 \u25c6 \u25c6"
+    },
+    {
+      "name": "started",
+      "phase": "playing",
+      "score": 0,
+      "animationFrameCount": 52,
+      "lives": "\u25c6 \u25c6 \u25c6"
+    },
+    {
+      "name": "played",
+      "phase": "playing",
+      "score": 80,
+      "animationFrameCount": 801,
+      "lives": "\u25c6 \u25c6 \u25c6"
+    },
+    {
+      "name": "paused",
+      "phase": "SYSTEM HOLDPAUSEDYour sector is secure for now.RESUMERESTARTMAIN MENU",
+      "score": 80,
+      "animationFrameCount": 814,
+      "lives": "\u25c6 \u25c6 \u25c6"
+    },
+    {
+      "name": "resumed",
+      "phase": "playing",
+      "score": 80,
+      "animationFrameCount": 827,
+      "lives": "\u25c6 \u25c6 \u25c6"
+    }
+  ],
+  "environment": {
+    "visibility": "visible",
+    "hidden": false,
+    "width": 1000,
+    "height": 749
+  },
+  "passed": true
+}

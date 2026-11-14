@@ -1,6 +1,6 @@
 # Space Intruders
 
-An original offline fixed shooter for macOS, built with Tauri 2, Vite, TypeScript, and Canvas. Move your cannon, fire through the alien formation, protect four shields, and survive as long as you can.
+An original offline fixed shooter for macOS and Windows, built with Tauri 2, Vite, TypeScript, and Canvas. Move your cannon, fire through the alien formation, protect four shields, and survive as long as you can.
 
 ## Install and launch
 
@@ -11,6 +11,12 @@ An original offline fixed shooter for macOS, built with Tauri 2, Vite, TypeScrip
 The app runs offline without a terminal or development server. This release is ad-hoc signed, but has no Developer ID signature or Apple notarization. Only override a developer verification warning after checking the source and checksum; treat a malware or damaged-app warning separately. Keep Gatekeeper enabled. See [Apple's first-open guidance](https://support.apple.com/en-us/102445). A ZIP is also available in the release.
 
 This release targets **macOS 13 or newer on Apple Silicon (ARM64)**. It was played and verified on Apple M5 Pro. Intel Macs and older macOS versions have not been verified for this final package.
+
+### Windows x64
+
+Download `Space Intruders_0.1.0_x64-setup.exe` and `SHA256SUMS-windows-x64.txt` from the same [v0.1.0 release](https://github.com/wowc8/space-intruders/releases/tag/v0.1.0). In PowerShell, run `Get-FileHash 'Space Intruders_0.1.0_x64-setup.exe' -Algorithm SHA256` and compare the hash to the Windows checksum file before running the installer. The validated SHA-256 is `42de6931c694aa6e9816986c08ce70d5dc220befcd259c9a85fa57a36e34d66f`.
+
+Run the setup executable to install for your Windows user. The installer is unsigned. After checking the source and hash, if Windows shows **Windows protected your PC** for an unrecognized app, choose **More info**, then **Run anyway** when offered. A managed policy or Smart App Control may block this option; in that case, the installer may remain blocked. Keep Defender enabled. The game runs offline; if WebView2 is missing, setup downloads its bootstrapper and requires internet for that installation. A native Windows x64 runner installed and launched this build and verified gameplay, score, pause, and resume through synthetic input. Physical keyboard and sound were not verified on Windows. See [Windows validation details](docs/WINDOWS.md).
 
 ## Controls and rules
 

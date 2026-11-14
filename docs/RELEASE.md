@@ -1,5 +1,7 @@
 # Space Intruders macOS release
 
+The v0.1.0 release also contains a separately built Windows x64 NSIS installer. See [Windows release and validation](WINDOWS.md). The original macOS tag, app, DMG, ZIP, and checksum file were preserved.
+
 ## Target and contents
 
 The standalone bundle is `release/Space Intruders.app`. The primary distributable is `release/Space-Intruders-macOS-arm64.dmg`; the existing zip is also available. SHA-256 values are in `release/SHA256SUMS`. The app embeds the production Vite assets and original icon. It uses no remote assets or backend.
