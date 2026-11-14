@@ -14,7 +14,7 @@ This release targets **macOS 13 or newer on Apple Silicon (ARM64)**. It was play
 
 ### Windows x64
 
-Download `Space Intruders_0.1.0_x64-setup.exe` and `SHA256SUMS-windows-x64.txt` from the same [v0.1.0 release](https://github.com/wowc8/space-intruders/releases/tag/v0.1.0). In PowerShell, run `Get-FileHash 'Space Intruders_0.1.0_x64-setup.exe' -Algorithm SHA256` and compare the hash to the Windows checksum file before running the installer. The validated SHA-256 is `42de6931c694aa6e9816986c08ce70d5dc220befcd259c9a85fa57a36e34d66f`.
+Download `Space.Intruders_0.1.0_x64-setup.exe` and `SHA256SUMS-windows-x64.txt` from the same [v0.1.0 release](https://github.com/wowc8/space-intruders/releases/tag/v0.1.0). In PowerShell, run `Get-FileHash 'Space.Intruders_0.1.0_x64-setup.exe' -Algorithm SHA256` and compare the hash to the Windows checksum file before running the installer. The validated SHA-256 is `42de6931c694aa6e9816986c08ce70d5dc220befcd259c9a85fa57a36e34d66f`.
 
 Run the setup executable to install for your Windows user. The installer is unsigned. After checking the source and hash, if Windows shows **Windows protected your PC** for an unrecognized app, choose **More info**, then **Run anyway** when offered. A managed policy or Smart App Control may block this option; in that case, the installer may remain blocked. Keep Defender enabled. The game runs offline; if WebView2 is missing, setup downloads its bootstrapper and requires internet for that installation. A native Windows x64 runner installed and launched this build and verified gameplay, score, pause, and resume through synthetic input. Physical keyboard and sound were not verified on Windows. See [Windows validation details](docs/WINDOWS.md).
 
