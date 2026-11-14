@@ -1,0 +1,6 @@
+:root { font-family: system-ui, sans-serif; color: #eaf8ff; background: #090d1a; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+.shell { width: min(100vw, 920px); margin: 0 auto; padding: 20px; text-align: center; }
+h1 { font-size: 1.25rem; letter-spacing: .3em; }
+canvas { display: block; width: min(100%, 800px); height: auto; margin: 0 auto; border: 1px solid #325064; }
