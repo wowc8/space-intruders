@@ -4,7 +4,11 @@ An original offline fixed shooter for macOS, built with Tauri 2, Vite, TypeScrip
 
 ## Install and launch
 
-Verify the release DMG against `release/SHA256SUMS`, open it, and drag **Space Intruders.app** to **Applications**. The app runs offline without a terminal or development server. This local release has no Developer ID signature or Apple notarization, so macOS may require **Control-click → Open** on first launch. Do not disable Gatekeeper globally. A ZIP is also available.
+1. Sign in to GitHub if prompted (the repository may be private), then download `Space-Intruders-macOS-arm64.dmg` and `SHA256SUMS` from the [official v0.1.0 release](https://github.com/wowc8/space-intruders/releases/tag/v0.1.0). Run `shasum -a 256 Space-Intruders-macOS-arm64.dmg` in the download folder and compare its output with the DMG entry in `SHA256SUMS`. If they differ, do not open the download.
+2. Open the DMG and drag **Space Intruders.app** to **Applications**. Open the app from Applications once. If macOS blocks it because the developer cannot be verified, dismiss the alert.
+3. Choose **Apple menu → System Settings → Privacy & Security**, scroll to **Security**, and click **Open Anyway** for Space Intruders. Confirm **Open** in the next prompt and authenticate if macOS asks. Subsequent launches work normally from Applications.
+
+The app runs offline without a terminal or development server. This release is ad-hoc signed, but has no Developer ID signature or Apple notarization. Only override a developer verification warning after checking the source and checksum; treat a malware or damaged-app warning separately. Keep Gatekeeper enabled. See [Apple's first-open guidance](https://support.apple.com/en-us/102445). A ZIP is also available in the release.
 
 This release targets **macOS 13 or newer on Apple Silicon (ARM64)**. It was played and verified on Apple M5 Pro. Intel Macs and older macOS versions have not been verified for this final package.
 

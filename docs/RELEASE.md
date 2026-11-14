@@ -22,7 +22,11 @@ The `strip = "none"` profile settings remain from the earlier Intel Rust 1.94 bu
 
 ## Install and trust
 
-Verify the DMG checksum, open the disk image, and drag **Space Intruders.app** to **Applications**. This local release has no Developer ID signature and has not been notarized. If macOS blocks the first launch, use Finder's Control-click **Open** flow. No global security setting needs changing. See `docs/TESTING.md` for the exact local signing inspection and native launch evidence.
+1. Sign in to GitHub if needed (the repository may be private). Download `Space-Intruders-macOS-arm64.dmg` and `SHA256SUMS` from the [official v0.1.0 release](https://github.com/wowc8/space-intruders/releases/tag/v0.1.0). Run `shasum -a 256 Space-Intruders-macOS-arm64.dmg` in the download folder and compare the result with the DMG entry in `SHA256SUMS`. Do not open a file whose checksum differs.
+2. Mount the DMG and drag **Space Intruders.app** to **Applications**. Try opening the app from Applications once. If macOS blocks it because the developer cannot be verified, dismiss the alert.
+3. Open **Apple menu → System Settings → Privacy & Security**, scroll to **Security**, and click **Open Anyway** for Space Intruders. Confirm **Open** when the prompt returns; authenticate if asked. Later launches can use Applications normally.
+
+The app has an ad-hoc signature, which is not a Developer ID signature, and it has not been notarized. Follow [Apple's first-open guidance](https://support.apple.com/en-us/102445) only after verifying the release source and checksum. A malware or damaged-app warning calls for investigation, not this developer-verification override. Keep Gatekeeper enabled. See `docs/TESTING.md` for the exact local signing inspection and native launch evidence.
 
 ## Package the verified bundle
 
