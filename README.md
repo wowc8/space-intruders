@@ -4,7 +4,7 @@ An original offline fixed shooter for macOS, built with Tauri 2, Vite, TypeScrip
 
 ## Install and launch
 
-Verify the release zip against `release/SHA256SUMS`, expand it, and open **Space Intruders.app** from Finder. The app runs offline without a terminal or development server. This local release has no Developer ID signature or Apple notarization, so macOS may require **Control-click → Open** on first launch. Do not disable Gatekeeper globally.
+Verify the release DMG against `release/SHA256SUMS`, open it, and drag **Space Intruders.app** to **Applications**. The app runs offline without a terminal or development server. This local release has no Developer ID signature or Apple notarization, so macOS may require **Control-click → Open** on first launch. Do not disable Gatekeeper globally. A ZIP is also available.
 
 This release targets **macOS 13 or newer on Apple Silicon (ARM64)**. It was played and verified on Apple M5 Pro. Intel Macs and older macOS versions have not been verified for this final package.
 
@@ -32,7 +32,7 @@ cd src-tauri && cargo build --release --locked --target aarch64-apple-darwin && 
 npm run desktop:build -- --ci --target aarch64-apple-darwin
 ```
 
-The app bundle is produced at `src-tauri/target/aarch64-apple-darwin/release/bundle/macos/Space Intruders.app`. Copy it to `release/` and use `ditto -c -k --sequesterRsrc --keepParent` to make `release/Space-Intruders-macOS-arm64.zip`. Reproducible means locked dependencies and repeatable build commands; bundle bytes are not guaranteed identical.
+The app bundle is produced at `src-tauri/target/aarch64-apple-darwin/release/bundle/macos/Space Intruders.app`. Copy it to `release/`; see [release details](docs/RELEASE.md) for the DMG packaging command. The ZIP uses `ditto -c -k --sequesterRsrc --keepParent`. Reproducible means locked dependencies and repeatable build commands; package bytes are not guaranteed identical.
 
 For development, run `npm run desktop:dev`.
 
